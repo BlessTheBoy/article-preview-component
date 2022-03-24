@@ -75,9 +75,6 @@ h1 {
   color: hsla(214, 17%, 51%, 0.514);
 }
 
-.shareWrap {
-}
-
 .details .share {
   z-index: 2;
   width: 35px;
@@ -153,10 +150,13 @@ h1 {
     max-width: 800px;
     grid-template-columns: 300px 450px;
     grid-template-rows: 1fr;
+    overflow: visible;
   }
   .imgWrap {
     flex-grow: 0.3;
     height: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem 0 0 0.5rem;
   }
   .imgWrap img {
     height: 100%;
@@ -168,5 +168,71 @@ h1 {
   }
   h1 {
     font-size: 1.28rem;
+  }
+
+  .shareWrap {
+    position: relative;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -4.5rem;
+    right: 50%;
+    transform: translateX(50%);
+    width: fit-content;
+    padding: 0.8rem 2.5rem;
+    max-height: 150px;
+    border-radius: 6px;
+    overflow: visible;
+    background-color: hsl(217, 19%, 35%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: hsl(214, 17%, 51%);
+    letter-spacing: 5px;
+    transition: all ease-in-out 0.25s;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tooltip::before {
+    content: "";
+    box-sizing: content-box;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid hsl(217, 19%, 35%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 95%);
+  }
+
+  .tooltip.active {
+    opacity: 1;
+    pointer-events: initial;
+    bottom: unset;
+    right: 50%;
+    width: fit-content;
+    padding: 0.8rem 2.5rem;
+    max-height: 150px;
+    border-radius: 6px;
+  }
+
+  .icons {
+    height: fit-content;
+  }
+
+  .icons svg path {
+    transition: fill ease-in-out 0.25s;
+  }
+
+  .icons svg:hover path {
+    fill: paleturquoise;
   }
 }
